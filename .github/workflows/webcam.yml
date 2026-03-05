@@ -53,4 +53,4 @@ jobs:
 
       - name: upload images to Google Drive
         run: |
-          rclone copy images gdrive:webcam_MI_2026/images --create-dirs
+          rclone copy images gdrive:webcam_MI_2026/images
