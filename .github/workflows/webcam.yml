@@ -32,11 +32,13 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y rclone
 
-      - name: write rclone config
+            - name: write rclone config
         run: |
           mkdir -p ~/.config/rclone
-          echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
-
+          cat > ~/.config/rclone/rclone.conf << 'EOF'
+          ${{ secrets.RCLONE_CONF }}
+          EOF
+          
       - name: upload images to Google Drive
         run: |
           # 把仓库里的 images/ 上传到你Google Drive的指定文件夹
