@@ -7,9 +7,6 @@ Original file is located at
     https://colab.research.google.com/drive/1GveohYNS8MmfH7EbXjzq2ciLkF5MVqFo
 """
 
-from google.colab import drive
-drive.mount('/content/drive')
-
 import requests
 import os
 from bs4 import BeautifulSoup
@@ -27,7 +24,7 @@ def save_images_giugliacci(image_sources, base_url, folder_name):
 
     for source in image_sources:
         url = base_url + source if base_url else source
-        response = requests.get(url)
+        response = requests.get(url, headers={"User-Agent": "Mozilla/5.0"})
 
         if response.status_code == 200:
 
