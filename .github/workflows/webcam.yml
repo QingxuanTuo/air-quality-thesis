@@ -2,8 +2,9 @@ name: webcam download
 
 on:
   schedule:
-    - cron: '0 2 * * *'
+    - cron: '0 2 * * *'  # UTC 02:00 = Milan 03:00 (冬令时)
   workflow_dispatch:
+
 jobs:
   run-script:
     runs-on: ubuntu-latest
@@ -24,3 +25,19 @@ jobs:
       - name: run script
         run: |
           python webcam_download.py
+
+      # ---------- Upload to Google Drive ----------
+      - name: install rclone
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y rclone
+
+      - name: write rclone config
+        run: |
+          mkdir -p ~/.config/rclone
+          echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
+
+      - name: upload images to Google Drive
+        run: |
+          # 把仓库里的 images/ 上传到你Google Drive的指定文件夹
+          rclone copy images gdrive:webcam_MI_2026/images --create-dirs
