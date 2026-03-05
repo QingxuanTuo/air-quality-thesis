@@ -1,16 +1,17 @@
 # air-quality-thesis pipeline（自动数据采集 pipeline）
 
 ## 流程概览
-GitHub server
-↓
-每天 UTC 02:00（≈ 米兰 03:00）
-↓
-运行 webcam_download.py
-↓
-抓取 Milan webcam
-↓
-保存到 images/
-↓
+
+GitHub server<br>
+↓<br>
+每天 UTC 02:00（≈ 米兰 03:00）<br>
+↓<br>
+运行 webcam_download.py<br>
+↓<br>
+抓取 Milan webcam<br>
+↓<br>
+保存到 images/<br>
+↓<br>
 rclone 上传到 Google Drive
 
 ## 建议每周检查一次
