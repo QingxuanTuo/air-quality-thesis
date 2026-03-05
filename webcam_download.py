@@ -15,7 +15,7 @@ import os
 from bs4 import BeautifulSoup
 from datetime import datetime, date, timedelta
 
-folder_path = '/content/drive/MyDrive/webcam_MI_2026'
+folder_path = "images"
 os.makedirs(folder_path, exist_ok=True)
 
 def save_images_giugliacci(image_sources, base_url, folder_name):
